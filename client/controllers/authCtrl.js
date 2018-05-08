@@ -1,7 +1,7 @@
 "use strict";
 
 angular
-    .module("MovieWatchlist")
+    .module("FantasyBB")
     .controller("AuthCtrl", function ($scope, AuthFactory, $location) {
         $scope.account = {};
 
