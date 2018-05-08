@@ -19,15 +19,13 @@ module.exports = (sequelize, DataTypes) => {
             owned: DataTypes.STRING,
             addrate: DataTypes.STRING
         },
-        { tableName: "Pitcher" }
+        { tableName: "pitcher" }
     );
     Pitcher.associate = function (models) {
         Pitcher.belongsTo(models.FantasyTeam, {
             foreignKey: "fantasy_team_id"
         });
-    };
-    FantasyTeam.associate = function (models) {
-        Pitcher.belongsTo(models.MLBteam, {
+        Pitcher.belongsTo(models.MLBTeam, {
             foreignKey: "mlb_id"
         });
     };

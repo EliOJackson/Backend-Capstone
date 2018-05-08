@@ -7,19 +7,15 @@ module.exports = (sequelize, DataTypes) => {
             record: DataTypes.STRING,
             standings: DataTypes.STRING
         },
-        { tableName: "Fantasy_Team" }
+        { tableName: "fantasy_team" }
     );
     FantasyTeam.associate = function (models) {
         FantasyTeam.hasMany(models.User, {
             foreignKey: "fantasy_team_id"
         });
-    };
-    FantasyTeam.associate = function (models) {
         FantasyTeam.hasMany(models.Pitcher, {
             foreignKey: "fantasy_team_id"
         });
-    };
-    FantasyTeam.associate = function (models) {
         FantasyTeam.hasMany(models.Batter, {
             foreignKey: "fantasy_team_id"
         });

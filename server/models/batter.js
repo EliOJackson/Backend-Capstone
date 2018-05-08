@@ -16,15 +16,13 @@ module.exports = (sequelize, DataTypes) => {
             own: DataTypes.STRING,
             add_rate: DataTypes.STRING
         },
-        { tableName: "Batter" }
+        { tableName: "batter" }
     );
     Batter.associate = function (models) {
         Batter.belongsTo(models.FantasyTeam, {
             foreignKey: "fantasy_team_id"
         });
-    };
-    FantasyTeam.associate = function (models) {
-        Batter.belongsTo(models.MLBteam, {
+        Batter.belongsTo(models.MLBTeam, {
             foreignKey: "mlb_id"
         });
     };
