@@ -10,6 +10,10 @@ angular.module("FantasyBB", ["ngRoute"]).config($routeProvider => {
             templateUrl: "partials/home.html",
             controller: "HomeCtrl"
         })
+        .when("/myteam/:id", {
+            templateUrl: "partials/teamview.html",
+            controller: "TeamCtrl"
+        })
         .otherwise("/");
 });
 

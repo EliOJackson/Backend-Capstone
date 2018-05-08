@@ -41,7 +41,6 @@ angular
                     .get("/status")
                     .then(user => {
                         console.log("user in set user status", user);
-
                         if (user) {
                             currentUser = user.data;
                         } else {
