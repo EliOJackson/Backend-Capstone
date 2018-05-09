@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
             era: DataTypes.STRING,
             whip: DataTypes.STRING,
             pr15: DataTypes.STRING,
-            owned: DataTypes.STRING,
+            ownedPercent: DataTypes.STRING,
             addrate: DataTypes.STRING
         },
         { tableName: "pitcher" }

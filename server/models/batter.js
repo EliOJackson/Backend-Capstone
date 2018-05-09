@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             avg: DataTypes.STRING,
             ops: DataTypes.STRING,
             pr15: DataTypes.STRING,
-            own: DataTypes.STRING,
+            ownedPercent: DataTypes.STRING,
             add_rate: DataTypes.STRING
         },
         { tableName: "batter" }

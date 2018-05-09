@@ -12,4 +12,7 @@ angular
             $scope.currentUser = user;
         });
 
+        $scope.console = () => {
+            console.log("Emily is cool", $scope.user);
+        }
     });
