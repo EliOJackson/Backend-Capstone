@@ -27,8 +27,8 @@ module.exports.scrapeBatters = (req, res, next) => {
                         ops: $(this).find('.playertableStat').eq(6).text(),
                         pr15: $(this).find('.playertableData').eq(0).text(),
                         ownedPercent: $(this).find('.playertableData').eq(1).text(),
-                        add_rate: $(this).find('.playertableData').eq(2).text()
-                        // fantasy_team_id: 1
+                        add_rate: $(this).find('.playertableData').eq(2).text(),
+                        fantasy_team_id: 1
                     }
                 });
                 const playerArrayTrimmed = playerArray.filter(n => n != undefined);
