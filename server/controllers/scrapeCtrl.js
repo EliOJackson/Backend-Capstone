@@ -32,12 +32,17 @@ module.exports.scrapeBatters = (req, res, next) => {
                     }
                 });
                 const playerArrayTrimmed = playerArray.filter(n => n != undefined);
-                Batter.bulkCreate(playerArrayTrimmed)
+                Batter.destroy({
+                    where: { fantasy_team_id: 1 }
+                })
                     .then(() => {
-                        return Batter.findAll();
-                    })
-                    .then(postedBatters => {
-                        console.log(postedBatters)
+                        Batter.bulkCreate(playerArrayTrimmed)
+                            .then(() => {
+                                return Batter.findAll();
+                            })
+                            .then(postedBatters => {
+                                console.log(postedBatters)
+                            })
                     })
                 // console.log(playerArrayTrimmed);
                 // resolve(playerArrayTrimmed);
