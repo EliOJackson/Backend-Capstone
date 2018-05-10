@@ -38,10 +38,10 @@ module.exports.scrapeBatters = (req, res, next) => {
                     .then(() => {
                         BatterSeason.bulkCreate(batterArrayTrimmed)
                             .then(() => {
-                                return BatterSeason.findAll();
+                                next()
                             })
-                            .then(postedBatters => {
-                                console.log(postedBatters)
+                            .catch(err => {
+                                next(err);
                             })
                     })
             }
@@ -91,4 +91,20 @@ module.exports.scrapePitchers = (req, res, next) => {
                     })
             }
         }, (error) => console.log(err));
+}
+
+module.exports.getSeasonStats = (req, res, next) => {
+    const { BatterSeason, PitcherSeason } = req.app.get("models");
+    BatterSeason.findAll( {
+        where: { fantasy_team_id: 1}
+    })
+    .then( batters => {
+        PitcherSeason.findAll( {
+            where: { fantasy_team_id: 1}
+        })
+        .then( pitchers => {
+            let jsonObj = { pitchers, batters};
+            res.status(200).json(jsonObj);
+        })
+    })
 }
