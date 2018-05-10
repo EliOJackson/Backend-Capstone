@@ -34,6 +34,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(routes);
 
+app.use((req, res, next) => {
+    let err = new Error("This resource was not found");
+    console.log("404 handler");
+    err.status = 404;
+    next(err);
+});
+
+app.use((err, req, res) => {
+    // one error handler to rule them all
+    res.json({
+        message: "You blew it",
+        err: err.message
+    });
+});
+
 app.listen(5555, () => {
     console.log("server listening on port 5555");
 });

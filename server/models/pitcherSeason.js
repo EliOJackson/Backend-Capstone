@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-    var Pitcher = sequelize.define(
-        "Pitcher",
+    var PitcherSeason = sequelize.define(
+        "PitcherSeason",
         {
             ranking: DataTypes.INTEGER,
             name: DataTypes.STRING,
@@ -19,15 +19,15 @@ module.exports = (sequelize, DataTypes) => {
             ownedPercent: DataTypes.STRING,
             addrate: DataTypes.STRING
         },
-        { tableName: "pitcher" }
+        { tableName: "pitcher_season" }
     );
-    Pitcher.associate = function (models) {
-        Pitcher.belongsTo(models.FantasyTeam, {
+    PitcherSeason.associate = function (models) {
+        PitcherSeason.belongsTo(models.FantasyTeam, {
             foreignKey: "fantasy_team_id"
         });
-        Pitcher.belongsTo(models.MLBTeam, {
+        PitcherSeason.belongsTo(models.MLBTeam, {
             foreignKey: "mlb_id"
         });
     };
-    return Pitcher;
+    return PitcherSeason;
 };

@@ -2,8 +2,8 @@
 
 const { Router } = require('express');
 const router = Router();
-const { scrapeBatters } = require("../controllers/scrapeCtrl");
+const { scrapeBatters, scrapePitchers } = require("../controllers/scrapeCtrl");
 
-router.post("/players", scrapeBatters);
+router.post("/players/season", scrapePitchers, scrapeBatters);
 
 module.exports = router;

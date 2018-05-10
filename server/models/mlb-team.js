@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         { tableName: "mlb_team" }
     );
     MLBTeam.associate = function (models) {
-        MLBTeam.hasMany(models.Pitcher, {
+        MLBTeam.hasMany(models.PitcherSeason, {
             foreignKey: "mlb_id"
         });
         MLBTeam.hasMany(models.BatterSeason, {
