@@ -32,7 +32,7 @@ const RegistrationStrategy = new Strategy(
 
         // using the Sequelize user model we initialized earlier as User, we check to see if the user already exists, and if not we add them.
         User.findOne({
-            where: { email } // remember, this is object literal shorthand. Same as { email: email}
+            where: { username } // remember, this is object literal shorthand. Same as { email: email}
         }).then(user => {
             if (user) {
                 console.log("user found, oops");
@@ -46,7 +46,6 @@ const RegistrationStrategy = new Strategy(
                 const data =
                     // values come from the req.body, added by body-parser when register form request is submitted
                     {
-                        email,
                         password: userPassword,
                         username: req.body.username
                     };
