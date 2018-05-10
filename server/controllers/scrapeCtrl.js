@@ -89,7 +89,6 @@ module.exports.scrapePitchers = (req, res, next) => {
                                 next(err);
                             })
                     })
-
             }
         }, (error) => console.log(err));
 }
