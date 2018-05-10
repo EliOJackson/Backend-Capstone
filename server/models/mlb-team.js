@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         MLBTeam.hasMany(models.Pitcher, {
             foreignKey: "mlb_id"
         });
-        MLBTeam.hasMany(models.Batter, {
+        MLBTeam.hasMany(models.BatterSeason, {
             foreignKey: "mlb_id"
         });
     };

@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         FantasyTeam.hasMany(models.Pitcher, {
             foreignKey: "fantasy_team_id"
         });
-        FantasyTeam.hasMany(models.Batter, {
+        FantasyTeam.hasMany(models.BatterSeason, {
             foreignKey: "fantasy_team_id"
         });
     };

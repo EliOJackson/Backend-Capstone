@@ -7,7 +7,7 @@ const app = express();
 const passport = require("passport");
 
 module.exports.scrapeBatters = (req, res, next) => {
-    const { Batter } = req.app.get("models");
+    const { BatterSeason } = req.app.get("models");
     axios.get("http://games.espn.com/flb/clubhouse?leagueId=691&teamId=8&seasonId=2018&version=currSeason")
         .then((response) => {
             if (response.status === 200) {
@@ -32,13 +32,13 @@ module.exports.scrapeBatters = (req, res, next) => {
                     }
                 });
                 const playerArrayTrimmed = playerArray.filter(n => n != undefined);
-                Batter.destroy({
+                BatterSeason.destroy({
                     where: { fantasy_team_id: 1 }
                 })
                     .then(() => {
-                        Batter.bulkCreate(playerArrayTrimmed)
+                        BatterSeason.bulkCreate(playerArrayTrimmed)
                             .then(() => {
-                                return Batter.findAll();
+                                return BatterSeason.findAll();
                             })
                             .then(postedBatters => {
                                 console.log(postedBatters)
