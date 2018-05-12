@@ -3,8 +3,8 @@
 <button ng-click="season()">season</button>
 <button ng-click="today()">today</button>
 <!-- <div>{{players}}</div> -->
-<div>Batters
-    <div ng-repeat="batter in batters">
+<div class="player-container">Batters
+    <div class="player-card" ng-repeat="batter in batters">
         <div>{{batter.name}}</div>
         <div>{{batter.h_ab}}</div>
         <div>{{batter.runs}}</div>
@@ -13,6 +13,20 @@
         <div>{{batter.sb}}</div>
         <div>{{batter.avg}}</div>
         <div>{{batter.ops}}</div>
+    </div>
+<div class="player-container">Pitchers
+    <div class="player-card" ng-repeat="pitcher in pitchers">
+        <div>{{pitcher.name}}</div>
+        <div>{{pitcher.ip}}</div>
+        <div>{{pitcher.hits}}</div>
+        <div>{{pitcher.er}}</div>
+        <div>{{pitcher.walks}}</div>
+        <div>{{pitcher.strikeouts}}</div>
+        <div>{{pitcher.qs}}</div>
+        <div>{{pitcher.wins}}</div>
+        <div>{{pitcher.saves}}</div>
+        <div>{{pitcher.era}}</div>
+        <div>{{pitcher.whip}}</div>
     </div>
 
 </div>

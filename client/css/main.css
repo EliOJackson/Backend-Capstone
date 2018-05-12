@@ -1,2 +1,18 @@
 body {
   background-color: goldenrod; }
+
+.player-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  padding: 5px; }
+
+.player-card {
+  flex-basis: 30%;
+  text-align: left;
+  margin: 10px 0;
+  padding-bottom: 12px;
+  position: relative;
+  -webkit-box-shadow: 2px 7px 20px -1px rgba(0, 0, 0, 0.61);
+  -moz-box-shadow: 2px 7px 20px -1px rgba(0, 0, 0, 0.61);
+  box-shadow: 2px 7px 20px -1px rgba(0, 0, 0, 0.61); }

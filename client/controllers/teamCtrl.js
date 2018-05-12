@@ -17,12 +17,14 @@ angular.module("FantasyBB").controller("TeamCtrl", function ($scope, PlayerFacto
             PlayerFactory.getPlayersSeason().then(data => {
               console.log("mydata", data.data);
               $scope.batters = data.data.batters;
+              $scope.pitchers = data.data.pitchers;
             });
         }
         $scope.today = () => {
             PlayerFactory.getPlayersToday().then(data => {
               console.log("mydata", data.data);
               $scope.batters = data.data.batters;
+              $scope.pitchers = data.data.pitchers;
             });
         }
         // function load() {
