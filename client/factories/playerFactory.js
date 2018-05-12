@@ -10,5 +10,14 @@ angular.module("FantasyBB").factory("PlayerFactory", function ($q, $http) {
                 });
         });
     };
-    return { getPlayersSeason };
+
+    function getPlayersToday() {
+        return $q((resolve, reject) => {
+            $http.get(`/players/today`)
+                .then(data => {
+                    resolve(data);
+                });
+        });
+    };
+    return { getPlayersSeason, getPlayersToday };
 });

@@ -1,9 +1,10 @@
 <h1> This is {{user.username}}'s team! </h1>
 <a href="#!/home">Home</a>
-<button ng-click="console()">SUP</button>
+<button ng-click="season()">season</button>
+<button ng-click="today()">today</button>
 <!-- <div>{{players}}</div> -->
-<div ng-repeat="batter in batters">
-    <div>Batters
+<div>Batters
+    <div ng-repeat="batter in batters">
         <div>{{batter.name}}</div>
         <div>{{batter.h_ab}}</div>
         <div>{{batter.runs}}</div>

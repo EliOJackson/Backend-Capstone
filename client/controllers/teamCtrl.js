@@ -13,12 +13,24 @@ angular.module("FantasyBB").controller("TeamCtrl", function ($scope, PlayerFacto
             console.log("Emily is cool", $scope.players);
         }
 
-        function load() {
-            PlayerFactory.getPlayersSeason()
-            .then(data => {
-                console.log("mydata", data.data);
-                $scope.batters = data.data.batters;
-            })
+        $scope.season = () => {
+            PlayerFactory.getPlayersSeason().then(data => {
+              console.log("mydata", data.data);
+              $scope.batters = data.data.batters;
+            });
         }
-        load();
+        $scope.today = () => {
+            PlayerFactory.getPlayersToday().then(data => {
+              console.log("mydata", data.data);
+              $scope.batters = data.data.batters;
+            });
+        }
+        // function load() {
+        //     PlayerFactory.getPlayersSeason()
+        //     .then(data => {
+        //         console.log("mydata", data.data);
+        //         $scope.batters = data.data.batters;
+        //     })
+        // }
+        // load();
     });

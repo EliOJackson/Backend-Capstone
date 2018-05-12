@@ -6,11 +6,11 @@ const express = require("express");
 const app = express();
 const passport = require("passport");
 
-module.exports.scrapeBattersSeason = (req, res, next) => {
-  const { BatterSeason } = req.app.get("models");
+module.exports.scrapeBattersToday = (req, res, next) => {
+  const { BatterToday } = req.app.get("models");
   axios
     .get(
-      "http://games.espn.com/flb/clubhouse?leagueId=691&teamId=8&seasonId=2018&version=currSeason"
+      "http://games.espn.com/flb/clubhouse?leagueId=691&teamId=8&seasonId=2018&version=today"
     )
     .then(
       response => {
@@ -71,10 +71,10 @@ module.exports.scrapeBattersSeason = (req, res, next) => {
               };
             });
           const batterArrayTrimmed = batterArray.filter(n => n != undefined);
-          BatterSeason.destroy({
+          BatterToday.destroy({
             where: { fantasy_team_id: 1 }
           }).then(() => {
-            BatterSeason.bulkCreate(batterArrayTrimmed)
+            BatterToday.bulkCreate(batterArrayTrimmed)
               .then(() => {
                 next();
               })
@@ -88,11 +88,11 @@ module.exports.scrapeBattersSeason = (req, res, next) => {
     );
 };
 
-module.exports.scrapePitchersSeason = (req, res, next) => {
-  const { PitcherSeason } = req.app.get("models");
+module.exports.scrapePitchersToday = (req, res, next) => {
+  const { PitcherToday } = req.app.get("models");
   axios
     .get(
-      "http://games.espn.com/flb/clubhouse?leagueId=691&teamId=8&seasonId=2018&version=currSeason"
+      "http://games.espn.com/flb/clubhouse?leagueId=691&teamId=8&seasonId=2018&version=today"
     )
     .then(
       response => {
@@ -165,10 +165,10 @@ module.exports.scrapePitchersSeason = (req, res, next) => {
               };
             });
           const pitcherArrayTrimmed = pitcherArray.filter(n => n != undefined);
-          PitcherSeason.destroy({
+          PitcherToday.destroy({
             where: { fantasy_team_id: 1 }
           }).then(() => {
-            PitcherSeason.bulkCreate(pitcherArrayTrimmed)
+            PitcherToday.bulkCreate(pitcherArrayTrimmed)
               .then(() => {
                 next();
               })
@@ -182,12 +182,12 @@ module.exports.scrapePitchersSeason = (req, res, next) => {
     );
 };
 
-module.exports.getSeasonStats = (req, res, next) => {
-  const { BatterSeason, PitcherSeason } = req.app.get("models");
-  BatterSeason.findAll({
+module.exports.getTodayStats = (req, res, next) => {
+  const { BatterToday, PitcherToday } = req.app.get("models");
+  BatterToday.findAll({
     where: { fantasy_team_id: 1 }
   }).then(batters => {
-    PitcherSeason.findAll({
+    PitcherToday.findAll({
       where: { fantasy_team_id: 1 }
     }).then(pitchers => {
       let jsonObj = { pitchers, batters };
