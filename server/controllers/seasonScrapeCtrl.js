@@ -24,7 +24,8 @@ module.exports.scrapeBattersSeason = (req, res, next) => {
             .each(function(i, elem) {
               batterArray[i] = {
                 name: $(this)
-                  .find(".playertablePlayerName")
+                  .find(".flexpop")
+                  .eq(0)
                   .text()
                   .trim(),
                 h_ab: $(this)
@@ -106,7 +107,8 @@ module.exports.scrapePitchersSeason = (req, res, next) => {
             .each(function(i, elem) {
               pitcherArray[i] = {
                 name: $(this)
-                  .find(".playertablePlayerName")
+                  .find(".flexpop")
+                  .eq(0)
                   .text()
                   .trim(),
                 ip: $(this)
