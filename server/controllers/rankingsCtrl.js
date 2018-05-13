@@ -6,7 +6,8 @@ const express = require("express");
 const app = express();
 const passport = require("passport");
 
-module.exports.rankingScrape = (req, res, next) => {
+module.exports.scrapeRankings = (req, res, next) => {
+  const { BatterSeason, PitcherSeason } = req.app.get("models");
   axios.get("http://www.espn.com/espn/print?id=22264663").then(
     response => {
       if (response.status === 200) {
@@ -18,7 +19,7 @@ module.exports.rankingScrape = (req, res, next) => {
           .find(".last")
           .each(function(i, elem) {
             playerArray[i] = {
-              rank: $(this)
+              ranking: $(this)
                 .find("td")
                 .eq(0)
                 .text(),
@@ -37,12 +38,26 @@ module.exports.rankingScrape = (req, res, next) => {
             };
           });
         const playerArrayTrimmed = playerArray.slice(0, 300);
-        console.log(playerArrayTrimmed);
-        fs.writeFile(
-          "server/data/rankings.json",
-          JSON.stringify(playerArrayTrimmed, null, 4),
-          err => console.log("File successfully written!")
-        );
+        let promiseArray = [];
+        playerArrayTrimmed.forEach(player => {
+          promiseArray.push(
+            BatterSeason.findOne({
+              where: { name: player.name }
+            })
+              .then(batter => {
+                  console.log(batter);
+                batter.updateAttributes({
+                  ranking: player.ranking
+                });
+              })
+              .catch(err => {
+                next(err);
+              })
+          );
+        });
+        promise.All(promiseArray).then(() => {
+          console.log(promiseArray);
+        });
       }
     },
     error => console.log(err)
