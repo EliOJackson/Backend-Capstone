@@ -22,6 +22,9 @@ module.exports = (sequelize, DataTypes) => {
     BatterUnowned.belongsTo(models.FantasyTeam, {
       foreignKey: "fantasy_team_id"
     });
+    BatterUnowned.belongsTo(models.MLBTeam, { 
+        foreignKey: "mlb_id"
+     });
   };
   return BatterUnowned;
 };
