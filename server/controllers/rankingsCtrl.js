@@ -40,10 +40,21 @@ module.exports.scrapeRankings = (req, res, next) => {
       const playerArrayTrimmed = playerArray.slice(0, 300);
       playerArrayTrimmed.forEach(player => {
         promiseArray.push(
-          //   BatterSeason.findOne({
-          //     where: { name: player.name }
-          //   })
-          //     .then(batter => {
+          PitcherSeason.update({
+            ranking: player.ranking
+          },
+             {
+              where: { name: player.name },
+              returning: true
+            })
+            .then(comeback => {
+              console.log("YEAHH", comeback);
+            })
+            .catch(err => {
+              next(err);
+            }),
+        );
+        promiseArray.push(
           BatterSeason.update({
             ranking: player.ranking
           },
@@ -60,7 +71,7 @@ module.exports.scrapeRankings = (req, res, next) => {
         );
       });
       Promise.all(promiseArray).then(() => {
-        
+        next();
       });
     }
   });
