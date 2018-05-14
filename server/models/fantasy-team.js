@@ -25,6 +25,12 @@ module.exports = (sequelize, DataTypes) => {
         FantasyTeam.hasMany(models.PitcherToday, {
             foreignKey: "fantasy_team_id"
         });
+        FantasyTeam.hasMany(models.BatterUnowned, {
+            foreignKey: "fantasy_team_id"
+        });
+        FantasyTeam.hasMany(models.PitcherUnowned, {
+            foreignKey: "fantasy_team_id"
+        });
     };
     return FantasyTeam;
 };
