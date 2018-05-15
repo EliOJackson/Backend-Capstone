@@ -8,7 +8,7 @@ const passport = require("passport");
 
 module.exports.scrapeRankings = (req, res, next) => {
   let promiseArray = [];
-  const { BatterSeason, PitcherSeason } = req.app.get("models");
+  const { BatterSeason, PitcherSeason, BatterUnowned, PitcherUnowned } = req.app.get("models");
   axios.get("http://www.espn.com/espn/print?id=22264663").then(response => {
     if (response.status === 200) {
       const html = response.data;
@@ -48,7 +48,7 @@ module.exports.scrapeRankings = (req, res, next) => {
               returning: true
             })
             .then(comeback => {
-              console.log("YEAHH", comeback);
+            
             })
             .catch(err => {
               next(err);
@@ -63,7 +63,37 @@ module.exports.scrapeRankings = (req, res, next) => {
               returning: true
             })
             .then(comeback => {
-              console.log("YEAHH", comeback);
+              
+            })
+            .catch(err => {
+              next(err);
+            })
+        );
+        promiseArray.push(
+          BatterUnowned.update({
+            ranking: player.ranking
+          },
+             {
+              where: { name: player.name },
+              returning: true
+            })
+            .then(comeback => {
+             
+            })
+            .catch(err => {
+              next(err);
+            })
+        );
+        promiseArray.push(
+          PitcherUnowned.update({
+            ranking: player.ranking
+          },
+             {
+              where: { name: player.name },
+              returning: true
+            })
+            .then(comeback => {
+             
             })
             .catch(err => {
               next(err);
