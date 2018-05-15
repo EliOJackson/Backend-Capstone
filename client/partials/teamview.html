@@ -2,31 +2,93 @@
 <a href="#!/home">Home</a>
 <button ng-click="season()">season</button>
 <button ng-click="today()">today</button>
-<!-- <div>{{players}}</div> -->
-<div class="player-container">Batters
-    <div class="player-card" ng-repeat="batter in batters">
-        <div>{{batter.name}}</div>
-        <div>{{batter.h_ab}}</div>
-        <div>{{batter.runs}}</div>
-        <div>{{batter.hr}}</div>
-        <div>{{batter.rbi}}</div>
-        <div>{{batter.sb}}</div>
-        <div>{{batter.avg}}</div>
-        <div>{{batter.ops}}</div>
-    </div>
-<div class="player-container">Pitchers
-    <div class="player-card" ng-repeat="pitcher in pitchers">
-        <div>{{pitcher.name}}</div>
-        <div>{{pitcher.ip}}</div>
-        <div>{{pitcher.hits}}</div>
-        <div>{{pitcher.er}}</div>
-        <div>{{pitcher.walks}}</div>
-        <div>{{pitcher.strikeouts}}</div>
-        <div>{{pitcher.qs}}</div>
-        <div>{{pitcher.wins}}</div>
-        <div>{{pitcher.saves}}</div>
-        <div>{{pitcher.era}}</div>
-        <div>{{pitcher.whip}}</div>
-    </div>
 
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Batters</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th scope="col">Pos</th>
+            <th scope="col">Player</th>
+            <th scope="col">H/AB</th>
+            <th scope="col">R</th>
+            <th scope="col">HR</th>
+            <th scope="col">RBI</th>
+            <th scope="col">SB</th>
+            <th scope="col">AVG</th>
+            <th scope="col">OPS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="batter in batters">
+            <th scope="row">TBD</th>
+            <td>{{batter.name}}</td>
+            <td>{{batter.h_ab}}</td>
+            <td>{{batter.runs}}</td>
+            <td>{{batter.hr}}</td>
+            <td>{{batter.rbi}}</td>
+            <td>{{batter.sb}}</td>
+            <td>{{batter.avg}}</td>
+            <td>{{batter.ops}}</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Pitchers</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th scope="col">Player</th>
+            <th scope="col">IP</th>
+            <th scope="col"> Hits</th>
+            <th scope="col">ER</th>
+            <th scope="col">BB</th>
+            <th scope="col">K</th>
+            <th scope="col">QS</th>
+            <th scope="col">W</th>
+            <th scope="col">SV</th>
+            <th scope="col">ERA</th>
+            <th scope="col">WHIP</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="pitcher in pitchers">
+            <th scope="row">TBD</th>
+            <td>{{pitcher.name}}</td>
+            <td>{{pitcher.ip}}</td>
+            <td>{{pitcher.hits}}</td>
+            <td>{{pitcher.er}}</td>
+            <td>{{pitcher.walks}}</td>
+            <td>{{pitcher.strikeouts}}</td>
+            <td>{{pitcher.qs}}</td>
+            <td>{{pitcher.wins}}</td>
+            <td>{{pitcher.saves}}</td>
+            <td>{{pitcher.era}}</td>
+            <td>{{pitcher.whip}}</td>
+        </tr>
+    </tbody>
+</table>
