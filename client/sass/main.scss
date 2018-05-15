@@ -5,7 +5,16 @@
 }
 
 body {
-    background-color: goldenrod;
+    background-color: whitesmoke;
+}
+
+.table-container {
+    display: flex !important;
+    justify-content: space-evenly;
+}
+
+.table-blue {
+    background-color: lightblue;
 }
 
 .player-container {
