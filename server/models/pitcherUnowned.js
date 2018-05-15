@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       ownedPercent: DataTypes.STRING,
       addrate: DataTypes.STRING
     },
-    { tableName: "pitcher_season" }
+    { tableName: "pitcher_unowned" }
   );
   PitcherUnowned.associate = function(models) {
     PitcherUnowned.belongsTo(models.FantasyTeam, {

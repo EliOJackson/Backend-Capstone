@@ -18,10 +18,10 @@ module.exports.scrapePitchersUnowned = (req, res, next) => {
         const html = response.data;
         const $ = cheerio.load(html);
         let statArray = [];
-        $("#playertable_1")
+        $("#playertable_0")
           .find(".pncPlayerRow")
           .each(function(i, elem) {
-            pitcherArray[i] = {
+            pitcherArray.push({
               name: $(this)
                 .find(".flexpop")
                 .eq(0)
@@ -80,8 +80,9 @@ module.exports.scrapePitchersUnowned = (req, res, next) => {
                 .eq(2)
                 .text(),
               fantasy_team_id: null
-            };
-          });
+            });
+          })
+        };
         axios
           .get(
             "http://games.espn.com/flb/freeagency?leagueId=691&teamId=8&seasonId=2018&version=currSeason&slotCategoryGroup=2"
@@ -95,7 +96,7 @@ module.exports.scrapePitchersUnowned = (req, res, next) => {
                 $("#playertable_1")
                   .find(".pncPlayerRow")
                   .each(function(i, elem) {
-                    pitcherArray[i] = {
+                    pitcherArray.push({
                       name: $(this)
                         .find(".flexpop")
                         .eq(0)
@@ -154,7 +155,7 @@ module.exports.scrapePitchersUnowned = (req, res, next) => {
                         .eq(2)
                         .text(),
                       fantasy_team_id: null
-                    };
+                    });
                   });
                 const pitcherArrayTrimmed = pitcherArray.filter(
                   n => n != undefined
@@ -164,7 +165,7 @@ module.exports.scrapePitchersUnowned = (req, res, next) => {
                 }).then(() => {
                   PitcherUnowned.bulkCreate(pitcherArrayTrimmed)
                     .then(() => {
-                      next();
+                      console.log("done");
                     })
                     .catch(err => {
                       next(err);
@@ -174,9 +175,9 @@ module.exports.scrapePitchersUnowned = (req, res, next) => {
             },
             error => console.log(err)
           );
-      }
-    });
-};
+      });
+    };
+    
 
 module.exports.scrapeBattersUnowned = (req, res, next) => {
   const { BatterUnowned } = req.app.get("models");

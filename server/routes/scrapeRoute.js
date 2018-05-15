@@ -10,7 +10,7 @@ const { scrapeBattersUnowned, scrapePitchersUnowned } = require("../controllers/
 router.get("/players/season", scrapePitchersSeason, scrapeBattersSeason, getSeasonStats);
 router.get("/players/today", scrapePitchersToday, scrapeBattersToday, getTodayStats);
 router.get("/players/rankings", scrapeRankings, getSeasonStats);
-router.get("/players/unowned", scrapeBattersUnowned);
+router.get("/players/unowned", scrapePitchersUnowned);
 
 
 module.exports = router;
