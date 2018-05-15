@@ -8,6 +8,15 @@ body {
 .table-blue {
   background-color: lightblue; }
 
+.table td {
+  border: 1px solid black; }
+
+.table {
+  border: 1px solid black; }
+
+.table th {
+  border: none; }
+
 .player-container {
   display: flex;
   flex-flow: row wrap;
