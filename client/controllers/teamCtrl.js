@@ -31,6 +31,22 @@ angular.module("FantasyBB").controller("TeamCtrl", function ($scope, PlayerFacto
               $scope.loading = false;              
             });
         }
+
+        $scope.reverse = () => {
+            PlayerFactory.getPlayersSeason().then(data => {
+                let chups = data.data.pitchers;
+                chups.forEach(pitcher => {
+                    let fullName = pitcher.name;
+                    let splitName = fullName.split(" ");
+                    let spliceName = splitName[0].slice(0, 2);
+                    let lastName = splitName[1].slice(0, 5);
+                    let lastNameFirstLetter = splitName[1].slice(0,1).toLowerCase();
+                    let concatName = (lastName + spliceName).toLowerCase();
+                    let url = `www.baseball-reference.com/players/${lastNameFirstLetter}/${concatName}01.shtml`
+                    console.log(url);
+                })
+            })
+        }
         // function load() {
         //     PlayerFactory.getPlayersSeason()
         //     .then(data => {
