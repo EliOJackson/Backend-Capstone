@@ -20,8 +20,8 @@
     </thead>
     <thead class="thead-dark">
         <tr>
-            <th title="Position" scope="col">Pos</th>
             <th title="Player Name" scope="col">Player</th>
+            <th title="Position" scope="col">Pos</th>
             <th title="Hits/At Bats" scope="col">H/AB</th>
             <th title="Runs Scored" scope="col">R</th>
             <th title="Home Runs" scope="col">HR</th>
@@ -33,8 +33,8 @@
     </thead>
     <tbody>
         <tr ng-repeat="batter in batters">
-            <th scope="row">TBD</th>
-            <td>{{batter.name}}</td>
+            <th scope="row">{{batter.name}}</th>
+            <td>{{batter.pos}}</td>
             <td>{{batter.h_ab}}</td>
             <td>{{batter.runs}}</td>
             <td>{{batter.hr}}</td>
@@ -66,8 +66,8 @@
     </thead>
     <thead class="thead-dark">
         <tr>
-            <th title="Position" scope="col">Pos</th>
             <th title="Player Name" scope="col">Player</th>
+            <th title="Position" scope="col">Pos</th>
             <th title="Innings Pitched" scope="col">IP</th>
             <th title="Hits given up" scope="col">Hits</th>
             <th title="Earned Runs" scope="col">ER</th>
@@ -82,8 +82,8 @@
     </thead>
     <tbody>
         <tr ng-repeat="pitcher in pitchers">
-            <th scope="row">TBD</th>
-            <td>{{pitcher.name}}</td>
+            <th scope="row">{{pitcher.name}}</th>
+            <td>{{pitcher.pos}}</td>
             <td>{{pitcher.ip}}</td>
             <td>{{pitcher.hits}}</td>
             <td>{{pitcher.er}}</td>
