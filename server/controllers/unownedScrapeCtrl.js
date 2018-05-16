@@ -22,6 +22,12 @@ module.exports.scrapePitchersUnowned = (req, res, next) => {
           .find(".pncPlayerRow")
           .each(function(i, elem) {
             pitcherArray.push({
+              pos: $(this)
+                .find(".playertablePlayerName")
+                .text()
+                .split(",")
+                .slice(1)[0]
+                .slice(4, 15),
               name: $(this)
                 .find(".flexpop")
                 .eq(0)
@@ -81,103 +87,108 @@ module.exports.scrapePitchersUnowned = (req, res, next) => {
                 .text(),
               fantasy_team_id: null
             });
-          })
-        };
-        axios
-          .get(
-            "http://games.espn.com/flb/freeagency?leagueId=691&teamId=8&seasonId=2018&version=currSeason&slotCategoryGroup=2"
-          )
-          .then(
-            response => {
-              if (response.status === 200) {
-                const html = response.data;
-                const $ = cheerio.load(html);
-                let statArray = [];
-                $("#playertable_1")
-                  .find(".pncPlayerRow")
-                  .each(function(i, elem) {
-                    pitcherArray.push({
-                      name: $(this)
-                        .find(".flexpop")
-                        .eq(0)
-                        .text()
-                        .trim(),
-                      ip: $(this)
-                        .find(".playertableStat")
-                        .eq(0)
-                        .text(),
-                      hits: $(this)
-                        .find(".playertableStat")
-                        .eq(1)
-                        .text(),
-                      er: $(this)
-                        .find(".playertableStat")
-                        .eq(2)
-                        .text(),
-                      walks: $(this)
-                        .find(".playertableStat")
-                        .eq(3)
-                        .text(),
-                      strikeouts: $(this)
-                        .find(".playertableStat")
-                        .eq(4)
-                        .text(),
-                      qs: $(this)
-                        .find(".playertableStat")
-                        .eq(5)
-                        .text(),
-                      wins: $(this)
-                        .find(".playertableStat")
-                        .eq(6)
-                        .text(),
-                      saves: $(this)
-                        .find(".playertableStat")
-                        .eq(7)
-                        .text(),
-                      era: $(this)
-                        .find(".playertableStat")
-                        .eq(8)
-                        .text(),
-                      whip: $(this)
-                        .find(".playertableStat")
-                        .eq(9)
-                        .text(),
-                      pr15: $(this)
-                        .find(".playertableData")
-                        .eq(0)
-                        .text(),
-                      ownedPercent: $(this)
-                        .find(".playertableData")
-                        .eq(1)
-                        .text(),
-                      addrate: $(this)
-                        .find(".playertableData")
-                        .eq(2)
-                        .text(),
-                      fantasy_team_id: null
-                    });
+          });
+      }
+      axios
+        .get(
+          "http://games.espn.com/flb/freeagency?leagueId=691&teamId=8&seasonId=2018&version=currSeason&slotCategoryGroup=2"
+        )
+        .then(
+          response => {
+            if (response.status === 200) {
+              const html = response.data;
+              const $ = cheerio.load(html);
+              let statArray = [];
+              $("#playertable_1")
+                .find(".pncPlayerRow")
+                .each(function(i, elem) {
+                  pitcherArray.push({
+                    pos: $(this)
+                      .find(".playertablePlayerName")
+                      .text()
+                      .split(",")
+                      .slice(1)[0]
+                      .slice(4, 15),
+                    name: $(this)
+                      .find(".flexpop")
+                      .eq(0)
+                      .text()
+                      .trim(),
+                    ip: $(this)
+                      .find(".playertableStat")
+                      .eq(0)
+                      .text(),
+                    hits: $(this)
+                      .find(".playertableStat")
+                      .eq(1)
+                      .text(),
+                    er: $(this)
+                      .find(".playertableStat")
+                      .eq(2)
+                      .text(),
+                    walks: $(this)
+                      .find(".playertableStat")
+                      .eq(3)
+                      .text(),
+                    strikeouts: $(this)
+                      .find(".playertableStat")
+                      .eq(4)
+                      .text(),
+                    qs: $(this)
+                      .find(".playertableStat")
+                      .eq(5)
+                      .text(),
+                    wins: $(this)
+                      .find(".playertableStat")
+                      .eq(6)
+                      .text(),
+                    saves: $(this)
+                      .find(".playertableStat")
+                      .eq(7)
+                      .text(),
+                    era: $(this)
+                      .find(".playertableStat")
+                      .eq(8)
+                      .text(),
+                    whip: $(this)
+                      .find(".playertableStat")
+                      .eq(9)
+                      .text(),
+                    pr15: $(this)
+                      .find(".playertableData")
+                      .eq(0)
+                      .text(),
+                    ownedPercent: $(this)
+                      .find(".playertableData")
+                      .eq(1)
+                      .text(),
+                    addrate: $(this)
+                      .find(".playertableData")
+                      .eq(2)
+                      .text(),
+                    fantasy_team_id: null
                   });
-                const pitcherArrayTrimmed = pitcherArray.filter(
-                  n => n != undefined
-                );
-                PitcherUnowned.destroy({
-                  where: { fantasy_team_id: null }
-                }).then(() => {
-                  PitcherUnowned.bulkCreate(pitcherArrayTrimmed)
-                    .then(() => {
-                      console.log("done");
-                    })
-                    .catch(err => {
-                      next(err);
-                    });
                 });
-              }
-            },
-            error => console.log(err)
-          );
-      });
-    };
-    
+              const pitcherArrayTrimmed = pitcherArray.filter(
+                n => n != undefined
+              );
+              PitcherUnowned.destroy({
+                where: { fantasy_team_id: null }
+              }).then(() => {
+                PitcherUnowned.bulkCreate(pitcherArrayTrimmed)
+                  .then(() => {
+                    console.log("done");
+                  })
+                  .catch(err => {
+                    next(err);
+                  });
+              });
+            }
+          },
+          error => console.log(err)
+        );
+    });
+};
 
 module.exports.scrapeBattersUnowned = (req, res, next) => {
   const { BatterUnowned } = req.app.get("models");
@@ -195,6 +206,12 @@ module.exports.scrapeBattersUnowned = (req, res, next) => {
           .find(".pncPlayerRow")
           .each(function(i, elem) {
             batterArray.push({
+              pos: $(this)
+                .find(".playertablePlayerName")
+                .text()
+                .split(",")
+                .slice(1)[0]
+                .slice(4, 15),
               name: $(this)
                 .find(".flexpop")
                 .eq(0)
@@ -257,6 +274,12 @@ module.exports.scrapeBattersUnowned = (req, res, next) => {
                   .find(".pncPlayerRow")
                   .each(function(i, elem) {
                     batterArray.push({
+                      pos: $(this)
+                        .find(".playertablePlayerName")
+                        .text()
+                        .split(",")
+                        .slice(1)[0]
+                        .slice(4, 15),
                       name: $(this)
                         .find(".flexpop")
                         .eq(0)

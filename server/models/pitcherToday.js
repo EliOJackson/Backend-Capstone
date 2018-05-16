@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     "PitcherToday",
     {
       ranking: DataTypes.INTEGER,
+      pos: DataTypes.STRING,
       name: DataTypes.STRING,
       ip: DataTypes.STRING,
       hits: DataTypes.STRING,

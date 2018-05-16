@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     "PitcherUnowned",
     {
       ranking: DataTypes.INTEGER,
+      pos: DataTypes.STRING,
       name: DataTypes.STRING,
       ip: DataTypes.STRING,
       hits: DataTypes.STRING,

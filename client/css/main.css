@@ -32,3 +32,19 @@ body {
   -webkit-box-shadow: 2px 7px 20px -1px rgba(0, 0, 0, 0.61);
   -moz-box-shadow: 2px 7px 20px -1px rgba(0, 0, 0, 0.61);
   box-shadow: 2px 7px 20px -1px rgba(0, 0, 0, 0.61); }
+
+.bg-dark {
+  background-color: #709ec7 !important; }
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white; }
+
+header {
+  padding: 154px 0 100px; }
+
+@media (min-width: 992px) {
+  header {
+    padding: 156px 0 100px; } }
+
+section {
+  padding: 150px 0; }

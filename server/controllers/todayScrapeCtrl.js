@@ -23,6 +23,12 @@ module.exports.scrapeBattersToday = (req, res, next) => {
             .find(".pncPlayerRow")
             .each(function(i, elem) {
               batterArray[i] = {
+                pos: $(this)
+                  .find(".playertablePlayerName")
+                  .text()
+                  .split(",")
+                  .slice(1)[0]
+                  .slice(4, 15),
                 name: $(this)
                   .find(".flexpop")
                   .eq(0)
@@ -106,6 +112,12 @@ module.exports.scrapePitchersToday = (req, res, next) => {
             .find(".pncPlayerRow")
             .each(function(i, elem) {
               pitcherArray[i] = {
+                pos: $(this)
+                  .find(".playertablePlayerName")
+                  .text()
+                  .split(",")
+                  .slice(1)[0]
+                  .slice(4, 15),
                 name: $(this)
                   .find(".flexpop")
                   .eq(0)

@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     "BatterToday",
     {
       ranking: DataTypes.INTEGER,
+      pos: DataTypes.STRING,
       name: DataTypes.STRING,
       h_ab: DataTypes.STRING,
       runs: DataTypes.STRING,

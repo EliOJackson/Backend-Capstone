@@ -42,3 +42,25 @@ body {
   position: relative;
   @include box-shadow(2px, 7px, 20px, -1px);
 }
+
+.bg-dark {
+    background-color: #709ec7 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+header {
+  padding: 154px 0 100px;
+}
+
+@media (min-width: 992px) {
+  header {
+    padding: 156px 0 100px;
+  }
+}
+
+section {
+  padding: 150px 0;
+}

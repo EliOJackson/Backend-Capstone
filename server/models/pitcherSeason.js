@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
         {
             ranking: DataTypes.INTEGER,
             name: DataTypes.STRING,
+            pos: DataTypes.STRING,
             ip: DataTypes.STRING,
             hits: DataTypes.STRING,
             er: DataTypes.STRING,
