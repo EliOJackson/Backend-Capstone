@@ -17,8 +17,8 @@ angular.module("FantasyBB").controller("TeamCtrl", function ($scope, PlayerFacto
             $scope.loading = true;
             PlayerFactory.getPlayersSeason().then(data => {
               console.log("mydata", data.data);
-              $scope.batters = data.data.batters;
-              $scope.pitchers = data.data.pitchers;
+              $scope.batters = addUrl(data.data.batters);
+              $scope.pitchers = addUrl(data.data.pitchers);
               $scope.loading = false;
             });
         }
@@ -42,11 +42,29 @@ angular.module("FantasyBB").controller("TeamCtrl", function ($scope, PlayerFacto
                     let lastName = splitName[1].slice(0, 5);
                     let lastNameFirstLetter = splitName[1].slice(0,1).toLowerCase();
                     let concatName = (lastName + spliceName).toLowerCase();
-                    player.url = `http://www.baseball-reference.com/players/${lastNameFirstLetter}/${concatName}01.shtml`
+                    if (player.ip) {
+                        player.url = `https://www.baseball-reference.com/players/gl.fcgi?id=${concatName}01&t=p&year=2018`;
+                    }
+                    if (player.rbi) {
+                        player.url = `https://www.baseball-reference.com/players/gl.fcgi?id=${concatName}01&t=b&year=2018`;
+                    }
                     playerArray.push(player);
                 })
                 return playerArray;
             };
+
+            $scope.loadIndividual = (url) => {
+                console.log(url);
+                PlayerFactory.getPlayerIndividual(url).then(playerData => {
+                    let statsArray = playerData.data;
+                    let lastOne = (statsArray.length - 1);
+                    let firstSlice = statsArray.slice(0, lastOne);
+                    let firstSliceLength = firstSlice.length;
+                    let sliceNumber = (firstSliceLength - 5);
+                    $scope.previousGames = firstSlice.slice(sliceNumber, firstSliceLength);
+                    console.log(secondSlice);
+                })
+            }
         
         // function load() {
         //     PlayerFactory.getPlayersSeason()

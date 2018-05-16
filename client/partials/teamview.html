@@ -35,8 +35,9 @@
         </thead>
         <tbody>
             <tr ng-repeat="batter in batters">
-                <th scope="row">
-                    <a ng-href="{{batter.url}}">{{batter.name}}</a>
+                <th scope="row" ng-click="loadIndividual(batter.url)">
+                    {{batter.name}}
+                    <!-- <a ng-href="{{batter.url}}" target="_blank">{{batter.name}}</a> -->
                 </th>
                 <td>{{batter.pos}}</td>
                 <td>{{batter.h_ab}}</td>
@@ -86,7 +87,9 @@
         </thead>
         <tbody>
             <tr ng-repeat="pitcher in pitchers">
-                <th scope="row">{{pitcher.name}}</th>
+                <th scope="row">
+                    <a ng-href="{{pitcher.url}}" target="_blank">{{pitcher.name}}</a>
+                </th>
                 <td>{{pitcher.pos}}</td>
                 <td>{{pitcher.ip}}</td>
                 <td>{{pitcher.hits}}</td>
