@@ -3,6 +3,10 @@
 angular.module("FantasyBB", ["ngRoute"]).config($routeProvider => {
     $routeProvider
         .when("/", {
+            templateUrl: "partials/login.html",
+            controller: "AuthCtrl"
+        })
+        .when("/register", {
             templateUrl: "partials/auth-form.html",
             controller: "AuthCtrl"
         })
