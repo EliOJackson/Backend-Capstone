@@ -99,7 +99,7 @@ module.exports.scrapePitchersUnowned = (req, res, next) => {
               const html = response.data;
               const $ = cheerio.load(html);
               let statArray = [];
-              $("#playertable_1")
+              $("#playertable_0")
                 .find(".pncPlayerRow")
                 .each(function(i, elem) {
                   pitcherArray.push({
@@ -195,7 +195,7 @@ module.exports.scrapeBattersUnowned = (req, res, next) => {
   let batterArray = [];
   axios
     .get(
-      "http://games.espn.com/flb/freeagency?leagueId=691&teamId=8&seasonId=2018&version=currSeason#&seasonId=2018&version=currSeason&=undefined&context=freeagency&view=stats&slotCategoryGroup=1"
+      "http://games.espn.com/flb/freeagency?leagueId=691&teamId=8&seasonId=2018&version=currSeason&slotCategoryGroup=1"
     )
     .then(response => {
       if (response.status === 200) {
@@ -262,7 +262,7 @@ module.exports.scrapeBattersUnowned = (req, res, next) => {
           });
         axios
           .get(
-            "http://games.espn.com/flb/freeagency?leagueId=691&teamId=8&seasonId=2018&version=currSeason#&seasonId=2018&version=currSeason&=undefined&context=freeagency&view=stats&slotCategoryGroup=1&startIndex=50"
+            "http://games.espn.com/flb/freeagency?leagueId=691&teamId=8&seasonId=2018&version=currSeason&slotCategoryGroup=1&startIndex=50"
           )
           .then(
             response => {
