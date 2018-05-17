@@ -18,7 +18,6 @@ angular
     $scope.season = () => {
       $scope.loading = true;
       PlayerFactory.getPlayersSeason().then(data => {
-        console.log("mydata", data.data);
         $scope.batters = addUrl(data.data.batters);
         $scope.pitchers = addUrl(data.data.pitchers);
         $scope.loading = false;
@@ -27,14 +26,8 @@ angular
     $scope.today = () => {
       $scope.loading = true;
       PlayerFactory.getPlayersToday().then(data => {
-        console.log("mydata", data.data);
         $scope.batters = addUrl(data.data.batters);
         $scope.pitchers = addUrl(data.data.pitchers);
-        console.log(
-          "emily is right, I am wrong",
-          $scope.batters,
-          $scope.pitchers
-        );
         $scope.loading = false;
       });
     };
@@ -73,6 +66,26 @@ angular
         $scope.previousGames = firstSlice.slice(sliceNumber, firstSliceLength);
         $scope.modalImage = $scope.previousGames[0].imgUrl;
         $scope.modalName = $scope.previousGames[0].name;
+        console.log($scope.previousGames)
+        $scope.loading = false;
+      });
+    };
+
+    $scope.loadIndividualPitcher = url => {
+      $scope.loading = true;
+      $scope.previousGames = null;
+      $scope.modalImage = null;
+      $scope.modalName = null;
+      PlayerFactory.getPitcherIndividual(url).then(playerData => {
+        let statsArray = playerData.data;
+        let lastOne = statsArray.length - 1;
+        let firstSlice = statsArray.slice(0, lastOne);
+        let firstSliceLength = firstSlice.length;
+        let sliceNumber = firstSliceLength - 5;
+        $scope.previousGames = firstSlice.slice(sliceNumber, firstSliceLength);
+        $scope.modalImage = $scope.previousGames[0].imgUrl;
+        $scope.modalName = $scope.previousGames[0].name;
+        console.log("hello", $scope.previousGames);
         $scope.loading = false;
       });
     };

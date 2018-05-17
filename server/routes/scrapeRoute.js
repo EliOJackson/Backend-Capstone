@@ -5,7 +5,7 @@ const router = Router();
 const { scrapeBattersSeason, scrapePitchersSeason, getSeasonStats } = require("../controllers/seasonScrapeCtrl");
 const { scrapeBattersToday, scrapePitchersToday, getTodayStats } = require("../controllers/todayScrapeCtrl");
 const { scrapeRankings } = require("../controllers/rankingsCtrl")
-const { scrapeIndBatter } = require("../controllers/individualCtrl")
+const { scrapeIndBatter, scrapeIndPitcher } = require("../controllers/individualCtrl")
 const { scrapeBattersUnowned, scrapePitchersUnowned } = require("../controllers/unownedScrapeCtrl")
 
 router.get("/players/season", scrapePitchersSeason, scrapeBattersSeason, getSeasonStats);
@@ -13,6 +13,7 @@ router.get("/players/today", scrapePitchersToday, scrapeBattersToday, getTodaySt
 router.get("/players/rankings", scrapeRankings, getSeasonStats);
 router.get("/players/unowned", scrapePitchersUnowned);
 router.post("/players/individualBatter", scrapeIndBatter);
+router.post("/players/individualPitcher", scrapeIndPitcher);
 
 
 module.exports = router;
