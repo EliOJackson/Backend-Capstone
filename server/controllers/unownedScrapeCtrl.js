@@ -91,7 +91,7 @@ module.exports.scrapePitchersUnowned = (req, res, next) => {
       }
       axios
         .get(
-          "http://games.espn.com/flb/freeagency?leagueId=691&teamId=8&seasonId=2018&version=currSeason&slotCategoryGroup=2"
+          "http://games.espn.com/flb/freeagency?leagueId=691&teamId=8&seasonId=2018&version=currSeason&slotCategoryGroup=2&startIndex=50"
         )
         .then(
           response => {
@@ -177,7 +177,7 @@ module.exports.scrapePitchersUnowned = (req, res, next) => {
               }).then(() => {
                 PitcherUnowned.bulkCreate(pitcherArrayTrimmed)
                   .then(() => {
-                    console.log("done");
+                    next();
                   })
                   .catch(err => {
                     next(err);
@@ -348,4 +348,18 @@ module.exports.scrapeBattersUnowned = (req, res, next) => {
           );
       }
     });
+};
+
+module.exports.getAllUnowned = (req, res, next) => {
+  const { BatterUnowned, PitcherUnowned } = req.app.get("models");
+  BatterUnowned.findAll({
+    where: { fantasy_team_id: null }
+  }).then(batters => {
+    PitcherUnowned.findAll({
+      where: { fantasy_team_id: null }
+    }).then(pitchers => {
+      let jsonObj = { pitchers, batters };
+      res.status(200).json(jsonObj);
+    });
+  });
 };
