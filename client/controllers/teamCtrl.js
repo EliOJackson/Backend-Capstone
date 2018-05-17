@@ -59,12 +59,12 @@ angular
       return playerArray;
     };
 
-    $scope.loadIndividual = url => {
+    $scope.loadIndividualBatter = url => {
       $scope.loading = true;
       $scope.previousGames = null;
       $scope.modalImage = null;
       $scope.modalName = null;
-      PlayerFactory.getPlayerIndividual(url).then(playerData => {
+      PlayerFactory.getBatterIndividual(url).then(playerData => {
         let statsArray = playerData.data;
         let lastOne = statsArray.length - 1;
         let firstSlice = statsArray.slice(0, lastOne);

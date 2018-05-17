@@ -7,7 +7,6 @@ const app = express();
 const passport = require("passport");
 
 module.exports.scrapeIndBatter = (req, res, next) => {
-  console.log("in the body", req.body.url);
   axios
     .get(req.body.url)
     .then(response => {
@@ -68,13 +67,11 @@ module.exports.scrapeIndBatter = (req, res, next) => {
                 .text()
             });
           });
-        //   console.log(statArray);
         res.status(200).json(statArray);
       }
     })
     .catch(err => {
       next(err);
     });
-
   error => console.log(err);
 };

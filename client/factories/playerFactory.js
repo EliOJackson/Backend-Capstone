@@ -20,17 +20,17 @@ angular.module("FantasyBB").factory("PlayerFactory", function ($q, $http) {
         });
     };
 
-    function getPlayerIndividual(playerUrl) {
+    function getBatterIndividual(playerUrl) {
         console.log("shut up", playerUrl)
         let obj = {
             url: playerUrl
         }
         return $q((resolve, reject) => {
-            $http.post("/players/individual", JSON.stringify(obj))
+            $http.post("/players/individualBatter", JSON.stringify(obj))
                 .then(data => {
                     resolve(data);
                 });
         });
     };
-    return { getPlayersSeason, getPlayersToday, getPlayerIndividual };
+    return { getPlayersSeason, getPlayersToday, getBatterIndividual };
 });

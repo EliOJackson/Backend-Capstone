@@ -12,7 +12,7 @@ router.get("/players/season", scrapePitchersSeason, scrapeBattersSeason, getSeas
 router.get("/players/today", scrapePitchersToday, scrapeBattersToday, getTodayStats);
 router.get("/players/rankings", scrapeRankings, getSeasonStats);
 router.get("/players/unowned", scrapePitchersUnowned);
-router.post("/players/individual", scrapeIndBatter);
+router.post("/players/individualBatter", scrapeIndBatter);
 
 
 module.exports = router;
