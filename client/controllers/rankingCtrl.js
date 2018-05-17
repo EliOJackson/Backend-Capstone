@@ -5,8 +5,11 @@ angular
     $scope.getUnownedPlayers = () => {
         // console.log("sup");
       RankingFactory.getUnownedPlayers().then(players => {
-        // let newArray = [...new Set players.data.batters]
-        console.log([...new Set(Object.values(players.data.batters))]);
+          $scope.batters = players.data.batters.sort(function(a, b){
+              return a.ranking - b.ranking;
+          });
+          console.log(players.data.batters)
+          $scope.pitchers = players.data.pitchers
       });
     };
   });
