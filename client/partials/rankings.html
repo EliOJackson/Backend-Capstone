@@ -1,3 +1,249 @@
 <h1> DeJong and the Restless </h1>
-<a href="#!/home">Home</a>
-<button ng-click="getUnownedPlayers()">Unowned</button>
+
+<button ng-click="showBatters()">Batters</button>
+<button ng-click="showPitchers()">Pitchers</button>
+
+<div class="loading" ng-show="loading">Loading&#8230;</div>
+
+<div class="modal fade" id="playerModal" tabindex="-1" role="dialog" aria-labelledby="playerModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="playerModalLabel">{{modalName}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img ng-if="modalImage" src="{{modalImage}}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table class="table table-striped table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Previous 5 games</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <thead class="whitesmoke">
+                                <tr>
+                                    <th title="Date Game Played" scope="col">Date</th>
+                                    <th title="Opponent" scope="col">Opp</th>
+                                    <th title="Result of the Game" scope="col">Result</th>
+                                    <th title="Hits/At Bats" scope="col">H/AB</th>
+                                    <th title="Runs" scope="col">R</th>
+                                    <th title="Home Runs" scope="col">HR</th>
+                                    <th title="Runs Batted In" scope="col">RBI</th>
+                                    <th title="Walks" scope="col">BB</th>
+                                    <th title="Stolen Bases" scope="col">SB</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="game in previousGames">
+                                    <td>{{game.date}}</td>
+                                    <td>{{game.opponent}}</td>
+                                    <td>{{game.result}}</td>
+                                    <td>{{game.h}}/{{game.ab}}</td>
+                                    <td>{{game.r}}</td>
+                                    <td>{{game.hr}}</td>
+                                    <td>{{game.rbi}}</td>
+                                    <td>{{game.bb}}</td>
+                                    <td>{{game.sb}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Pitcher -->
+<div class="modal fade" id="pitcherModal" tabindex="-1" role="dialog" aria-labelledby="pitcherModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="pitcherModalLabel">{{modalName}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img ng-if="modalImage" src="{{modalImage}}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table class="table table-striped table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Previous 5 games</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <thead class="whitesmoke">
+                                <tr>
+                                    <th title="Date Game Played" scope="col">Date</th>
+                                    <th title="Opponent" scope="col">Opp</th>
+                                    <th title="Result of the Game" scope="col">Result</th>
+                                    <th title="Batter Decision" scope="col">Dec</th>
+                                    <th title="Innings Pitched" scope="col">IP</th>
+                                    <th title="Earned Runs" scope="col">ER</th>
+                                    <th title="Walks" scope="col">BB</th>
+                                    <th title="Strikeouts" scope="col">K</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="game in previousGames">
+                                    <td>{{game.date}}</td>
+                                    <td>{{game.opponent}}</td>
+                                    <td>{{game.result}}</td>
+                                    <td>{{game.dec}}</td>
+                                    <td>{{game.ip}}</td>
+                                    <td>{{game.er}}</td>
+                                    <td>{{game.bb}}</td>
+                                    <td>{{game.k}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="table-container" ng-show="batterList">
+    <table class="table table-striped table-sm table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">My Batters</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <thead class="whitesmoke">
+            <tr>
+                <th title="Player Name" scope="col">Player</th>
+                <th title="Position" scope="col">Pos</th>
+                <th title="Ranking" scope="col">Ranking</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="batter in batters">
+                <td scope="row" ng-click="loadIndividualBatter(batter.url)" data-toggle="modal" data-target="#playerModal">
+                    {{batter.name}}
+                </td>
+                <td>{{batter.pos}}</td>
+                <td>{{batter.ranking}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+<table class="table table-striped table-sm table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Unowned Batters</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <thead class="whitesmoke">
+        <tr>
+            <th title="Player Name" scope="col">Player</th>
+            <th title="Position" scope="col">Pos</th>
+            <th title="Ranking" scope="col">Ranking</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="batter in unownedBatters" ng-show="batter.ranking">
+            <td scope="row" ng-click="loadIndividualBatter(batter.url)" data-toggle="modal" data-target="#playerModal">
+                {{batter.name}}
+            </td>
+            <td>{{batter.pos}}</td>
+            <td>{{batter.ranking}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div class="table-container" ng-show="pitcherList">
+    <table class="table table-striped table-sm table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">My Pitchers</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <thead class="whitesmoke">
+            <tr>
+                <th title="Player Name" scope="col">Player</th>
+                <th title="Position" scope="col">Pos</th>
+                <th title="Ranking" scope="col">Ranking</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pitcher in pitchers">
+                <td scope="row" ng-click="loadIndividualPitcher(pitcher.url)" data-toggle="modal" data-target="#pitcherModal">
+                    {{pitcher.name}}
+                </td>
+                <td>{{pitcher.pos}}</td>
+                <td>{{pitcher.ranking}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+<table class="table table-striped table-sm table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Unowned Pitchers</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <thead class="whitesmoke">
+        <tr>
+            <th title="Player Name" scope="col">Player</th>
+            <th title="Position" scope="col">Pos</th>
+            <th title="Ranking" scope="col">Ranking</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="pitcher in unownedPitchers" ng-show="pitcher.ranking">
+            <td scope="row" ng-click="loadIndividualPitcher(pitcher.url)" data-toggle="modal" data-target="#pitcherModal">
+                {{pitcher.name}}
+            </td>
+            <td>{{pitcher.pos}}</td>
+            <td>{{pitcher.ranking}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>

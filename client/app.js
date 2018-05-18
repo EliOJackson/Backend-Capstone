@@ -2,27 +2,27 @@
 
 angular.module("FantasyBB", ["ngRoute"]).config($routeProvider => {
     $routeProvider
-        .when("/", {
-            templateUrl: "partials/login.html",
-            controller: "AuthCtrl"
-        })
-        .when("/register", {
-            templateUrl: "partials/auth-form.html",
-            controller: "AuthCtrl"
-        })
-        .when("/home", {
-            templateUrl: "partials/home.html",
-            controller: "HomeCtrl"
-        })
-        .when("/myteam/:id", {
-            templateUrl: "partials/teamview.html",
-            controller: "TeamCtrl"
-        })
-        .when("/rankings", {
-            templateUrl: "partials/rankings.html",
-            controller: "RankingsCtrl"
-        })
-        .otherwise("/");
+      .when("/", {
+        templateUrl: "partials/auth-form.html",
+        controller: "AuthCtrl"
+      })
+      .when("/login", {
+        templateUrl: "partials/login.html",
+        controller: "AuthCtrl"
+      })
+      .when("/home", {
+        templateUrl: "partials/home.html",
+        controller: "HomeCtrl"
+      })
+      .when("/myteam/:id", {
+        templateUrl: "partials/teamview.html",
+        controller: "TeamCtrl"
+      })
+      .when("/rankings", {
+        templateUrl: "partials/rankings.html",
+        controller: "RankingsCtrl"
+      })
+      .otherwise("/");
 });
 
 angular

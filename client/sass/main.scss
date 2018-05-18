@@ -5,9 +5,27 @@
 }
 
 body {
-  background-color: whitesmoke;
+  background-color: burlywood;
+  font-family: 'Open Sans', sans-serif;
 }
 
+.modal-body{
+    background-color: burlywood;
+    font-family: 'Open Sans', sans-serif;
+}
+.modal-footer{
+    background-color: burlywood;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-family: 'Bitter', serif !important;
+}
+
+.whitesmoke {
+    background-color: whitesmoke;
+    border-bottom: 3px solid black;
+}
 .table-container {
   display: flex !important;
   justify-content: space-evenly;
@@ -44,7 +62,26 @@ body {
 }
 
 .bg-dark {
-  background-color: #709ec7 !important;
+  background-color: #4A777A !important;
+}
+
+.modal-header {
+  background-color: #4A777A !important;
+  color: white;   
+  font-family: 'Bitter', serif !important;
+}
+button {
+  background-color: #4A777A !important;
+  color: white;   
+  font-family: 'Bitter', serif !important;
+}
+
+thead {
+    background-color: forestgreen;
+}
+
+tbody {
+    background-color: whitesmoke;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -184,4 +221,36 @@ section {
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.navbar-brand,
+.navbar-nav a {
+    font-family: 'Bitter', serif !important;
+}
+
+image { 
+    background-image: url("../images/metsfans-callout-pic-superJumbo.jpg");
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;    
+}
+.homePic {
+  width: 100vw;
+  min-height: 40em;
+  opacity: 0.8;
+}
+.image { 
+   position: relative; 
+   width: 100%; /* for IE 6 */
+  opacity: 0.8;   
+}
+
+h2 { 
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    width: 100%;
+    font-family: 'Bitter', serif !important;
+    color: whitesmoke;
+    font-size: 10em;
 }

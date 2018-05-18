@@ -64,9 +64,13 @@ angular
         let firstSliceLength = firstSlice.length;
         let sliceNumber = firstSliceLength - 5;
         $scope.previousGames = firstSlice.slice(sliceNumber, firstSliceLength);
-        $scope.modalImage = $scope.previousGames[0].imgUrl;
-        $scope.modalName = $scope.previousGames[0].name;
-        console.log($scope.previousGames)
+        if ($scope.previousGames[0] !== undefined) {
+          $scope.modalImage = $scope.previousGames[0].imgUrl;
+          $scope.modalName = $scope.previousGames[0].name;
+          $scope.loading = false;
+        } else {
+          $scope.modalName = "Sorry, no data found";
+        }
         $scope.loading = false;
       });
     };
@@ -83,19 +87,14 @@ angular
         let firstSliceLength = firstSlice.length;
         let sliceNumber = firstSliceLength - 5;
         $scope.previousGames = firstSlice.slice(sliceNumber, firstSliceLength);
-        $scope.modalImage = $scope.previousGames[0].imgUrl;
-        $scope.modalName = $scope.previousGames[0].name;
-        console.log("hello", $scope.previousGames);
+        if ($scope.previousGames[0] !== undefined) {
+          $scope.modalImage = $scope.previousGames[0].imgUrl;
+          $scope.modalName = $scope.previousGames[0].name;
+          $scope.loading = false;
+        } else {
+          $scope.modalName = "Sorry, no data found";
+        }
         $scope.loading = false;
       });
     };
-
-    // function load() {
-    //     PlayerFactory.getPlayersSeason()
-    //     .then(data => {
-    //         console.log("mydata", data.data);
-    //         $scope.batters = data.data.batters;
-    //     })
-    // }
-    // load();
   });

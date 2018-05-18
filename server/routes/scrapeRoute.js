@@ -10,7 +10,7 @@ const { scrapeBattersUnowned, scrapePitchersUnowned, getAllUnowned } = require("
 
 router.get("/players/season", scrapePitchersSeason, scrapeBattersSeason, getSeasonStats);
 router.get("/players/today", scrapePitchersToday, scrapeBattersToday, getTodayStats);
-router.get("/players/rankings", scrapeRankings, getSeasonStats);
+router.get("/players/rankings", scrapePitchersSeason, scrapeBattersSeason, scrapeRankings, getSeasonStats);
 router.get("/players/unowned", scrapePitchersUnowned, scrapeBattersUnowned, scrapeRankingsUnowned, getAllUnowned);
 router.post("/players/individualBatter", scrapeIndBatter);
 router.post("/players/individualPitcher", scrapeIndPitcher);
