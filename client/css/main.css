@@ -189,3 +189,30 @@ section {
 .navbar-brand,
 .navbar-nav a {
   font-family: 'Bitter', serif !important; }
+
+image {
+  background-image: url("../images/metsfans-callout-pic-superJumbo.jpg");
+  background-size: cover;
+  /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center; }
+
+.homePic {
+  width: 100vw;
+  min-height: 40em;
+  opacity: 0.8; }
+
+.image {
+  position: relative;
+  width: 100%;
+  /* for IE 6 */
+  opacity: 0.8; }
+
+h2 {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  width: 100%;
+  font-family: 'Bitter', serif !important;
+  color: whitesmoke;
+  font-size: 10em; }
