@@ -6,6 +6,7 @@
 
 body {
   background-color: whitesmoke;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .table-container {
@@ -44,7 +45,15 @@ body {
 }
 
 .bg-dark {
-  background-color: #709ec7 !important;
+  background-color: #4A777A !important;
+}
+
+thead {
+    background-color: forestgreen;
+}
+
+tbody {
+    background-color: burlywood;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -185,3 +194,10 @@ section {
     transform: rotate(360deg);
   }
 }
+
+.navbar-brand,
+.navbar-nav a {
+    font-family: 'Bitter', serif !important;
+}
+
+

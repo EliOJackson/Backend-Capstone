@@ -8,7 +8,6 @@ angular
         $scope.batters = players.data.batters.sort(function(a, b) {
           return a.ranking - b.ranking;
         });
-        console.log(players.data.batters);
         $scope.pitchers = players.data.pitchers;
       });
     };
@@ -32,7 +31,6 @@ angular
           });
           $scope.unownedBatters = addUrl(sortedUnownedBatters);
           $scope.unownedPitchers = addUrl(sortedUnownedPitchers);
-          console.log($scope.unownedBatters, $scope.unownedPitchers, $scope.batters, $scope.pitchers)
           $scope.loading = false;
         });
       });
@@ -80,7 +78,6 @@ angular
         if ($scope.previousGames[0] !== undefined) {
             $scope.modalImage = $scope.previousGames[0].imgUrl;
             $scope.modalName = $scope.previousGames[0].name;
-            console.log($scope.previousGames);
             $scope.loading = false;
         } else {
             $scope.modalName = "Sorry, no data found";
@@ -104,7 +101,6 @@ angular
         if ($scope.previousGames[0] !== undefined) {
           $scope.modalImage = $scope.previousGames[0].imgUrl;
           $scope.modalName = $scope.previousGames[0].name;
-          console.log($scope.previousGames);
           $scope.loading = false;
         } else {
           $scope.modalName = "Sorry, no data found";
