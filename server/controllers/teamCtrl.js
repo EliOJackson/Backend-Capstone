@@ -8,11 +8,11 @@ const passport = require("passport");
 module.exports.addFantasyTeam = (req, res, next) => {
     const { FantasyTeam } = req.app.get("models");
     FantasyTeam.create( {
-        name: req.body.name,
-        record: req.body.record,
-        standings: req.body.standings
+        name: "DeJong and the Restless"
+        record: null,
+        standings: null
     })
     .then(() => {
-
+        next();
     });
 };
