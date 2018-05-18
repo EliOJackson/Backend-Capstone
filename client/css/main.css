@@ -1,6 +1,13 @@
 body {
-  background-color: whitesmoke;
+  background-color: burlywood;
   font-family: 'Open Sans', sans-serif; }
+
+h1 {
+  font-family: 'Bitter', serif !important; }
+
+.whitesmoke {
+  background-color: whitesmoke;
+  border-bottom: 3px solid black; }
 
 .table-container {
   display: flex !important;
