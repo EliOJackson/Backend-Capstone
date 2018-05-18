@@ -8,5 +8,12 @@ angular.module("FantasyBB").factory("RankingFactory", function($q, $http) {
         });
       });
     }
-    return { getUnownedPlayers };
+    function getOwnedPlayers() {
+      return $q((resolve, reject) => {
+        $http.get(`players/rankings`).then(data => {
+          resolve(data);
+        });
+      });
+    }
+    return { getUnownedPlayers, getOwnedPlayers};
 })
