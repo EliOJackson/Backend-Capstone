@@ -9,6 +9,15 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.modal-body{
+    background-color: burlywood;
+    font-family: 'Open Sans', sans-serif;
+}
+.modal-footer{
+    background-color: burlywood;
+    font-family: 'Open Sans', sans-serif;
+}
+
 h1 {
     font-family: 'Bitter', serif !important;
 }
@@ -56,12 +65,23 @@ h1 {
   background-color: #4A777A !important;
 }
 
+.modal-header {
+  background-color: #4A777A !important;
+  color: white;   
+  font-family: 'Bitter', serif !important;
+}
+button {
+  background-color: #4A777A !important;
+  color: white;   
+  font-family: 'Bitter', serif !important;
+}
+
 thead {
     background-color: forestgreen;
 }
 
 tbody {
-    background-color: burlywood;
+    background-color: whitesmoke;
 }
 
 .navbar-dark .navbar-nav .nav-link {
