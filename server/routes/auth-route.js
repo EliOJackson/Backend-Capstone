@@ -5,7 +5,7 @@ const router = Router();
 
 const { register, login, logout } = require("../controllers/authCtrl.js");
 const { addFantasyTeam } = require("../controllers/teamCtrl");
-router.post("/register", addFatnasyTeam, register);
+router.post("/register", addFantasyTeam, register);
 router.post("/login", login);
 router.post("/logout", logout);
 
