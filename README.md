@@ -37,6 +37,8 @@ If you have already registered an account, you may select the Login button in th
 
 <img src="client/images/login.png">
 
+## View Team
+
 Once you register/login, you will be brought to the home page. Here you can select My Team or Rankings in the top right Nav Bar.
 
 <img src="client/images/home.png">
@@ -45,15 +47,25 @@ Once you have selceted My Team, you will have the option to select Batters or Pi
 
 <img src="client/images/myteam.png">
 
+## Select Player
+
 Selecting a players name once he has been loaded will pop out a modal showing that players last 5 stats. For example, click Paul Goldschmidt.
 
 <img src="client/images/player.png">
+
+## View Rankings
 
 You may also view rankings by clicking the rankings link in the top right of the navbar. ** Warning. This scrape currently has a long load time. While it may seem like the load is frozen, it does indeed work after an extended period of time (sometimes up to 15 seconds). Thank you for your patience **
 
 Once the page is loaded, you can select batters or pitchers. The left table will be your teams players with their ranks. The right table will be players available to be picked up, with their ranks.
 
 <img src="client/images/batters.png">
+
+
+
+
+
+
 
 
 

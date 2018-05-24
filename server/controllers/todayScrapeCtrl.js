@@ -19,16 +19,22 @@ module.exports.scrapeBattersToday = (req, res, next) => {
           const $ = cheerio.load(html);
           let batterArray = [];
           let statArray = [];
+          let text;
           $("#playertable_0")
             .find(".pncPlayerRow")
             .each(function(i, elem) {
+                if ($(this).find(".playertablePlayerName").length > 0) {
+                  text = $(this)
+                    .find(".playertablePlayerName")
+                    .text()
+                    .split(",")
+                    .slice(1)[0]
+                    .slice(4, 15);
+                } else {
+                  text = "";
+                }
               batterArray[i] = {
-                pos: $(this)
-                  .find(".playertablePlayerName")
-                  .text()
-                  .split(",")
-                  .slice(1)[0]
-                  .slice(4, 15),
+                pos: text,
                 name: $(this)
                   .find(".flexpop")
                   .eq(0)
@@ -108,16 +114,22 @@ module.exports.scrapePitchersToday = (req, res, next) => {
           const $ = cheerio.load(html);
           let pitcherArray = [];
           let statArray = [];
+          let text;
           $("#playertable_1")
             .find(".pncPlayerRow")
             .each(function(i, elem) {
+                if ($(this).find(".playertablePlayerName").length > 0) {
+                  text = $(this)
+                    .find(".playertablePlayerName")
+                    .text()
+                    .split(",")
+                    .slice(1)[0]
+                    .slice(4, 15);
+                } else {
+                  text = "";
+                }
               pitcherArray[i] = {
-                pos: $(this)
-                  .find(".playertablePlayerName")
-                  .text()
-                  .split(",")
-                  .slice(1)[0]
-                  .slice(4, 15),
+                pos: text,
                 name: $(this)
                   .find(".flexpop")
                   .eq(0)
