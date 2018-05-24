@@ -19,16 +19,22 @@ module.exports.scrapeBattersSeason = (req, res, next) => {
           const $ = cheerio.load(html);
           let batterArray = [];
           let statArray = [];
+          let text;
           $("#playertable_0")
             .find(".pncPlayerRow")
             .each(function(i, elem) {
+                if ($(this).find(".playertablePlayerName").length > 0) {
+                  text = $(this)
+                    .find(".playertablePlayerName")
+                    .text()
+                    .split(",")
+                    .slice(1)[0]
+                    .slice(4, 15);
+                } else {
+                  text = "";
+                }
               batterArray[i] = {
-                pos: $(this)
-                  .find(".playertablePlayerName")
-                  .text()
-                  .split(",")
-                  .slice(1)[0]
-                  .slice(4, 15),
+                pos: text,
                 name: $(this)
                   .find(".flexpop")
                   .eq(0)
@@ -108,16 +114,22 @@ module.exports.scrapePitchersSeason = (req, res, next) => {
           const $ = cheerio.load(html);
           let pitcherArray = [];
           let statArray = [];
+          let text;
           $("#playertable_1")
             .find(".pncPlayerRow")
             .each(function(i, elem) {
-              pitcherArray[i] = {
-                pos: $(this)
+              if ($(this).find(".playertablePlayerName").length > 0) {
+                text = $(this)
                   .find(".playertablePlayerName")
                   .text()
                   .split(",")
                   .slice(1)[0]
-                  .slice(4, 15),
+                  .slice(4, 15);
+              } else {
+                text = "";
+              }
+              pitcherArray[i] = {
+                pos: text,
                 name: $(this)
                   .find(".flexpop")
                   .eq(0)
@@ -179,6 +191,7 @@ module.exports.scrapePitchersSeason = (req, res, next) => {
               };
             });
           const pitcherArrayTrimmed = pitcherArray.filter(n => n != undefined);
+          console.log(pitcherArrayTrimmed);
           PitcherSeason.destroy({
             where: { fantasy_team_id: 1 }
           }).then(() => {
