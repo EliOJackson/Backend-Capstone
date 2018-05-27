@@ -12,10 +12,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "tucker.eli.jackson@gmail.com",
-    "password": "Drpepper2#",
-    "database": "fantasybb",
-    "host": "http://stealinghome.herokuapp.com/",
+    "username": "vhpkgjxyoyfrfi",
+    "password": "b211d37e494f10a10a391c736765e4c22a3689aebcc5a96ac295e0002e6d3dad",
+    "database": "d3dec3skajnr54",
+    "host": "ec2-50-19-232-205.compute-1.amazonaws.com",
     "dialect": "postgres",
     "dialectOptions": {
       "ssl": {
