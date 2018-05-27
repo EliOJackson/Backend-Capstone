@@ -4,6 +4,7 @@
   "description": "This is my final back end capstone project for NSS",
   "main": "server.js",
   "scripts": {
+    "start": "npm run dev",
     "create-db": "node create-db.js",
     "sass": "node-sass client/sass/ -o client/css/",
     "lint": "eslint --color **/*.js --ignore-pattern node_modules/",
@@ -46,5 +47,9 @@
     "pg-hstore": "^2.3.2",
     "rerun-script": "^0.6.0",
     "sequelize": "^4.37.6"
-  }
+  },
+  "engines": {
+  "node": "^9.1.0",
+  "npm": "^5.5.1"
+}
 }
