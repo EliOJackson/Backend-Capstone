@@ -16,6 +16,7 @@
     "password": "Drpepper2#",
     "database": "fantasybb",
     "host": "http://stealinghome.herokuapp.com/",
+    "dialect": "postgres",
     "dialectOptions": {
       "ssl": {
         "require": true
