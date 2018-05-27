@@ -53,9 +53,5 @@ app.use((err, req, res) => {
 
 let models = require("./server/models");
 
-models.sequelize.sync({ force: true }).then(() => {
-  console.log("Database created");
-  process.exit();
-}); 
 
 app.listen(process.env.PORT || 5050)
