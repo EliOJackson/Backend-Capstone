@@ -5,6 +5,7 @@ const app = express();
 
 // auth stuff
 const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 const passport = require("passport");
 const bodyParser = require("body-parser");
 
@@ -19,13 +20,14 @@ app.use(
     express.static(__dirname + "/node_modules/angular-route/")
 );
 
-app.use(
-    session({
-        secret: "keyboard cat",
-        resave: true,
-        saveUninitialized: true
-    })
-);
+// app.use(
+//   session({
+//     secret: "keyboard cat",
+//     store: new MongoStore(option),
+//     saveUninitialized: true,
+//     resave: false
+//   })
+// );
 
 require("./server/config/passport-strat.js");
 app.use(passport.initialize());
