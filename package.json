@@ -4,7 +4,7 @@
   "description": "This is my final back end capstone project for NSS",
   "main": "server.js",
   "scripts": {
-    "start": "npm run dev",
+    "start": "node server.js",
     "create-db": "node create-db.js",
     "sass": "node-sass client/sass/ -o client/css/",
     "lint": "eslint --color **/*.js --ignore-pattern node_modules/",
