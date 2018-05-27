@@ -19,8 +19,6 @@ angular
             },
 
             loginUser(userObj) {
-                console.log("userObj", userObj);
-
                 return $q((resolve, reject) => {
                     $http.post("/login", userObj).then(user => {
                         currentUser = user.data;
@@ -40,7 +38,6 @@ angular
                 return $http
                     .get("/status")
                     .then(user => {
-                        console.log("user in set user status", user);
                         if (user) {
                             currentUser = user.data;
                         } else {
@@ -53,7 +50,6 @@ angular
             },
 
             broadcastUserLogin(user) {
-                console.log("calling broadcast", user);
                 $rootScope.$broadcast("handleBroadcast", user);
             }
         };

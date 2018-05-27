@@ -7,13 +7,9 @@ angular
 
     $scope.$on("handleBroadcast", function(event, user) {
       $scope.user = user;
-      console.log("Current 11111", $scope.user.username);
       $scope.currentUser = user;
     });
 
-    $scope.console = () => {
-      console.log("Emily is cool", $scope.players);
-    };
 
     $scope.season = () => {
       $scope.loading = true;
@@ -69,7 +65,6 @@ angular
         $scope.previousGames = firstSlice.slice(sliceNumber, firstSliceLength);
         $scope.modalImage = $scope.previousGames[0].imgUrl;
         $scope.modalName = $scope.previousGames[0].name;
-        console.log($scope.previousGames);
         $scope.loading = false;
       });
     };
@@ -80,7 +75,6 @@ angular
       $scope.modalImage = null;
       $scope.modalName = null;
       PlayerFactory.getPitcherIndividual(url).then(playerData => {
-        console.log(playerData);
         let statsArray = playerData.data;
         let lastOne = statsArray.length - 1;
         let firstSlice =
@@ -101,13 +95,4 @@ angular
         $scope.loading = false;
       });
     };
-
-    // function load() {
-    //     PlayerFactory.getPlayersSeason()
-    //     .then(data => {
-    //         console.log("mydata", data.data);
-    //         $scope.batters = data.data.batters;
-    //     })
-    // }
-    // load();
   });

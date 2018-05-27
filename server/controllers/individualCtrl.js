@@ -17,7 +17,6 @@ module.exports.scrapeIndBatter = (req, res, next) => {
         $("#batting_gamelogs")
           .find("tr")
           .each(function(i, elem) {
-            console.log($(this).text());
             statArray.push({
               date: $(this)
                 .find("td")
@@ -89,7 +88,6 @@ module.exports.scrapeIndPitcher = (req, res, next) => {
         $("#pitching_gamelogs")
           .find("tr")
           .each(function(i, elem) {
-            console.log($(this).text());
             statArray.push({
               date: $(this)
                 .find("td")

@@ -140,7 +140,6 @@ module.exports.scrapeRankingsUnowned = (req, res, next) => {
         });
       const playerArrayTrimmed = playerArray.slice(0, 300);
       playerArrayTrimmed.forEach(player => {
-          console.log(player);
         promiseArray.push(
           BatterUnowned.update({
             ranking: player.ranking
