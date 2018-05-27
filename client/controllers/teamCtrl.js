@@ -4,6 +4,7 @@ angular
   .module("FantasyBB")
   .controller("TeamCtrl", function($scope, PlayerFactory) {
     let currentUserId = null;
+    $scope.modalImage = "";
 
     $scope.$on("handleBroadcast", function(event, user) {
       $scope.user = user;
