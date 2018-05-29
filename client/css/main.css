@@ -216,3 +216,7 @@ h2 {
   font-family: 'Bitter', serif !important;
   color: whitesmoke;
   font-size: 10em; }
+
+.my-table {
+  table-layout: fixed;
+  word-wrap: break-word; }

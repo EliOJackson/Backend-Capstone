@@ -22,7 +22,7 @@ angular.module("FantasyBB", ["ngRoute"]).config($routeProvider => {
         templateUrl: "partials/rankings.html",
         controller: "RankingsCtrl"
       })
-      .otherwise("/");
+      .otherwise("/login");
 });
 
 angular
