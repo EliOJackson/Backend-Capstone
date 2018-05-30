@@ -28,7 +28,8 @@ h1 {
   border: 1px solid black; }
 
 .table {
-  border: 1px solid black; }
+  border: 1px solid black;
+  max-width: 50% !important; }
 
 .table th {
   border: none; }
@@ -56,6 +57,9 @@ h1 {
   background-color: #4A777A !important;
   color: white;
   font-family: 'Bitter', serif !important; }
+
+.modal-content {
+  max-width: 80%; }
 
 button {
   background-color: #4A777A !important;
@@ -216,7 +220,3 @@ h2 {
   font-family: 'Bitter', serif !important;
   color: whitesmoke;
   font-size: 10em; }
-
-.my-table {
-  table-layout: fixed;
-  word-wrap: break-word; }

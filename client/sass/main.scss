@@ -41,6 +41,7 @@ h1 {
 
 .table {
   border: 1px solid black;
+  max-width: 50% !important;
 }
 
 .table th {
@@ -69,6 +70,10 @@ h1 {
   background-color: #4A777A !important;
   color: white;   
   font-family: 'Bitter', serif !important;
+}
+
+.modal-content {
+    max-width: 80%;
 }
 button {
   background-color: #4A777A !important;
@@ -255,7 +260,7 @@ h2 {
     font-size: 10em;
 }
 
-.my-table {
-    table-layout: fixed;
-    word-wrap: break-word;
-}
+// .my-table {
+//     table-layout: fixed;
+//     word-wrap: break-word;
+// }
